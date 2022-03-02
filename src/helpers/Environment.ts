@@ -14,7 +14,7 @@ export class EnvHelper {
   // static alchemyEthereumTestnetURI = `https://eth-rinkeby.alchemyapi.io/v2/${EnvHelper.env.REACT_APP_ETHEREUM_TESTNET_ALCHEMY}`;
   static alchemyArbitrumTestnetURI = `https://arb-rinkeby.g.alchemy.com/v2/${EnvHelper.env.REACT_APP_ARBITRUM_TESTNET_ALCHEMY}`;
   static alchemyAvalancheTestnetURI = ``;
-
+  static polygonMumbaiTestnetURI = `https://polygon-mumbai.g.alchemy.com/v2/${EnvHelper.env.REACT_APP_POLYGON_TESTNET_ALCHEMY_IDS}`;
   static whitespaceRegex = /\s+/;
 
   /**
@@ -102,7 +102,18 @@ export class EnvHelper {
         } else {
           ALCHEMY_ID_LIST = [];
         }
-        uriPath = "https://polygon-mainnet.g.alchemy.com/v2";
+        uriPath = "https://polygon-mainnet.g.alchemy.com/v2/";
+        break;
+      case NetworkId.POLYGON_TESTNET:
+        if (
+          EnvHelper.env.REACT_APP_POLYGON_TESTNET_ALCHEMY_IDS &&
+          EnvHelper.isNotEmpty(EnvHelper.env.REACT_APP_POLYGON_TESTNET_ALCHEMY_IDS)
+        ) {
+          ALCHEMY_ID_LIST = EnvHelper.env.REACT_APP_POLYGON_TESTNET_ALCHEMY_IDS.split(EnvHelper.whitespaceRegex);
+        } else {
+          ALCHEMY_ID_LIST = [];
+        }
+        uriPath = "https://polygon-mumbai.g.alchemy.com/v2/";
         break;
       case NetworkId.AVALANCHE:
         if (

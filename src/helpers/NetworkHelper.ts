@@ -39,6 +39,10 @@ export const initNetworkFunc = async ({ provider }: IGetCurrentNetwork) => {
         networkName = "Avalanche";
         uri = NodeHelper.getMainnetURI(id);
         break;
+      case 80001:
+        networkName = "Polygon Mumbai Testnet";
+        uri = NodeHelper.getMainnetURI(id);
+        break;
       default:
         supported = false;
         networkName = "Unsupported Network";
