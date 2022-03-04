@@ -2,7 +2,7 @@ import { OHMTokenStackProps } from "@olympusdao/component-library";
 import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
 import { BigNumber, BigNumberish, ethers } from "ethers";
 import { EnvHelper } from "src/helpers/Environment";
-import { NodeHelper } from "src/helpers/NodeHelper";
+// import { NodeHelper } from "src/helpers/NodeHelper";
 import { RootState } from "src/store";
 import { FiatDAOContract, FuseProxy, IERC20, IERC20__factory, SOhmv2, WsOHM } from "src/typechain";
 import { GOHM__factory } from "src/typechain/factories/GOHM__factory";
@@ -68,16 +68,16 @@ export const getBalances = createAsyncThunk(
   async ({ address, networkID, provider }: IBaseAddressAsyncThunk): Promise<IUserBalances> => {
     let gOhmBalance = BigNumber.from("0");
     let gOhmBalAsSohmBal = BigNumber.from("0");
-    let gOhmOnArbitrum = BigNumber.from("0");
-    let gOhmOnArbAsSohm = BigNumber.from("0");
-    let gOhmOnAvax = BigNumber.from("0");
-    let gOhmOnAvaxAsSohm = BigNumber.from("0");
-    let gOhmOnPolygon = BigNumber.from("0");
-    let gOhmOnPolygonAsSohm = BigNumber.from("0");
-    let gOhmOnFantom = BigNumber.from("0");
-    let gOhmOnFantomAsSohm = BigNumber.from("0");
-    let gOhmOnTokemak = BigNumber.from("0");
-    let gOhmOnTokemakAsSohm = BigNumber.from("0");
+    const gOhmOnArbitrum = BigNumber.from("0");
+    const gOhmOnArbAsSohm = BigNumber.from("0");
+    const gOhmOnAvax = BigNumber.from("0");
+    const gOhmOnAvaxAsSohm = BigNumber.from("0");
+    const gOhmOnPolygon = BigNumber.from("0");
+    const gOhmOnPolygonAsSohm = BigNumber.from("0");
+    const gOhmOnFantom = BigNumber.from("0");
+    const gOhmOnFantomAsSohm = BigNumber.from("0");
+    const gOhmOnTokemak = BigNumber.from("0");
+    const gOhmOnTokemakAsSohm = BigNumber.from("0");
     let ohmBalance = BigNumber.from("0");
     let sohmBalance = BigNumber.from("0");
     let mockSohmBalance = BigNumber.from("0");
@@ -97,12 +97,14 @@ export const getBalances = createAsyncThunk(
     } catch (e) {
       handleContractError(e);
     }
+    /*
     try {
       const arbProvider = NodeHelper.getAnynetStaticProvider(NetworkId.ARBITRUM);
       const gOhmArbContract = GOHM__factory.connect(addresses[NetworkId.ARBITRUM].GOHM_ADDRESS, arbProvider);
       gOhmOnArbitrum = await gOhmArbContract.balanceOf(address);
       gOhmOnArbAsSohm = await gOhmContract.balanceFrom(gOhmOnArbitrum.toString());
     } catch (e) {
+      console.log(e);
       handleContractError(e);
     }
     try {
@@ -111,6 +113,7 @@ export const getBalances = createAsyncThunk(
       gOhmOnAvax = await gOhmAvaxContract.balanceOf(address);
       gOhmOnAvaxAsSohm = await gOhmContract.balanceFrom(gOhmOnAvax.toString());
     } catch (e) {
+      console.log(e);
       handleContractError(e);
     }
     try {
@@ -119,6 +122,19 @@ export const getBalances = createAsyncThunk(
       gOhmOnPolygon = await gOhmPolygonContract.balanceOf(address);
       gOhmOnPolygonAsSohm = await gOhmContract.balanceFrom(gOhmOnPolygon.toString());
     } catch (e) {
+      console.log(e);
+      handleContractError(e);
+    }
+    try {
+      const polygonProvider = NodeHelper.getAnynetStaticProvider(NetworkId.POLYGON_TESTNET);
+      const gOhmPolygonContract = GOHM__factory.connect(
+        addresses[NetworkId.POLYGON_TESTNET].GOHM_ADDRESS,
+        polygonProvider,
+      );
+      gOhmOnPolygon = await gOhmPolygonContract.balanceOf(address);
+      gOhmOnPolygonAsSohm = await gOhmContract.balanceFrom(gOhmOnPolygon.toString());
+    } catch (e) {
+      console.log(e);
       handleContractError(e);
     }
     try {
@@ -127,6 +143,7 @@ export const getBalances = createAsyncThunk(
       gOhmOnFantom = await gOhmFantomContract.balanceOf(address);
       gOhmOnFantomAsSohm = await gOhmContract.balanceFrom(gOhmOnFantom.toString());
     } catch (e) {
+      console.log(e);
       handleContractError(e);
     }
 
@@ -136,8 +153,10 @@ export const getBalances = createAsyncThunk(
       gOhmOnTokemak = await gOhmTokemakContract.balanceOf(address);
       gOhmOnTokemakAsSohm = await gOhmContract.balanceFrom(gOhmOnTokemak.toString());
     } catch (e) {
+      console.log(e);
       handleContractError(e);
     }
+    */
     try {
       const wsohmContract = new ethers.Contract(addresses[networkID].WSOHM_ADDRESS as string, wsOHM, provider) as WsOHM;
       wsohmBalance = await wsohmContract.balanceOf(address);
