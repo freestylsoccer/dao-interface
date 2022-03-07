@@ -160,6 +160,6 @@ export const v2BondDetails: { [key: number]: { [key: string]: V2BondDetails } } 
     ["0x055475920a8c93cffb64d039a8205f7acc7722d3"]: OhmDaiDetails,
   },
   [NetworkId.POLYGON_TESTNET]: {
-    ["0x2dd2b797d8fbd892d8ce6c9260f8488ccd6c9a6c"]: DaiDetails,
+    ["0x2d473e6de77c6105ee0acb435fce8240420a88d8"]: DaiDetails,
   },
 };

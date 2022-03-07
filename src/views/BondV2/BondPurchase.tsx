@@ -63,6 +63,12 @@ function BondPurchase({
         ),
       );
     } else {
+      console.log(ethers.utils.parseUnits(quantity, bond.quoteDecimals));
+      console.log(networkId);
+      console.log(provider);
+      console.log(bond);
+      console.log(Math.round(Number(bond.priceTokenBigNumber.toString()) * (1 + slippage / 100)));
+      console.log(recipientAddress);
       dispatch(
         purchaseBond({
           amount: ethers.utils.parseUnits(quantity, bond.quoteDecimals),

@@ -177,6 +177,7 @@ export const purchaseBond = createAsyncThunk(
         dispatch(clearPendingTxn(depositTx.hash));
       }
     } catch (e: unknown) {
+      console.log(e);
       dispatch(error((e as IJsonRPCError).message));
       return;
     } finally {
@@ -265,9 +266,8 @@ async function processBond(
     console.error(`Add details for bond index=${index}`);
   }
   const quoteTokenPrice = await v2BondDetail.pricingFunction(provider, bond.quoteToken);
-  console.log(quoteTokenPrice);
   const bondPriceBigNumber = await depositoryContract.marketPrice(index);
-  console.log(bondPriceBigNumber);
+  // console.log(bondPriceBigNumber);
   const bondPrice = +bondPriceBigNumber / Math.pow(10, BASE_TOKEN_DECIMALS);
   const bondPriceUSD = quoteTokenPrice * +bondPrice;
   const ohmPrice = (await dispatch(findOrLoadMarketPrice({ provider, networkID })).unwrap())?.marketPrice;
