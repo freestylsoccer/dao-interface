@@ -20,7 +20,7 @@ import { ZapperToken } from "src/helpers/ZapHelper";
 
 import { ReactComponent as XIcon } from "../../assets/icons/x.svg";
 
-const NATIVE_TOKENS = ["sOHM", "wsOHM"];
+// const NATIVE_TOKENS = ["sOHM", "wsOHM"];
 
 function SelectTokenModal(
   handleClose: () => void,

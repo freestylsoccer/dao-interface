@@ -3,12 +3,12 @@ import { DataRow } from "@olympusdao/component-library";
 import { BigNumber } from "ethers";
 import { convertGohmToOhm, formatNumber, nonNullable, parseBigNumber } from "src/helpers";
 import {
-  useFuseBalance,
+  // useFuseBalance,
   useGohmBalance,
-  useGohmTokemakBalance,
+  // useGohmTokemakBalance,
   useSohmBalance,
-  useV1SohmBalance,
-  useWsohmBalance,
+  // useV1SohmBalance,
+  // useWsohmBalance,
 } from "src/hooks/useBalance";
 import { useCurrentIndex } from "src/hooks/useCurrentIndex";
 import { useStakingRebaseRate } from "src/hooks/useStakingRebaseRate";
@@ -20,29 +20,18 @@ export const StakeNextRebaseAmount = () => {
 
   const sohmBalances = useSohmBalance();
   const gohmBalances = useGohmBalance();
-  const wsohmBalances = useWsohmBalance();
-  const v1sohmBalances = useV1SohmBalance();
-  const gohmFuseBalances = useFuseBalance();
-  const gohmTokemakBalances = useGohmTokemakBalance();
+  // const wsohmBalances = useWsohmBalance();
+  // const v1sohmBalances = useV1SohmBalance();
+  // const gohmFuseBalances = useFuseBalance();
+  // const gohmTokemakBalances = useGohmTokemakBalance();
 
   const networks = useTestableNetworks();
   const { data: currentIndex } = useCurrentIndex();
 
-  const sohmTokens = [sohmBalances[networks.MAINNET].data, v1sohmBalances[networks.MAINNET].data];
+  const sohmTokens = [sohmBalances[networks.POLYGON].data];
   const totalSohmBalance = sohmTokens.filter(nonNullable).reduce((res, bal) => res.add(bal), BigNumber.from(0));
 
-  const gohmTokens = [
-    gohmBalances[networks.MAINNET].data,
-    gohmBalances[NetworkId.ARBITRUM].data,
-    gohmBalances[NetworkId.AVALANCHE].data,
-    gohmBalances[NetworkId.POLYGON].data,
-    gohmBalances[NetworkId.FANTOM].data,
-    wsohmBalances[NetworkId.MAINNET].data,
-    wsohmBalances[NetworkId.ARBITRUM].data,
-    wsohmBalances[NetworkId.AVALANCHE].data,
-    gohmFuseBalances[NetworkId.MAINNET].data,
-    gohmTokemakBalances[NetworkId.MAINNET].data,
-  ];
+  const gohmTokens = [gohmBalances[NetworkId.POLYGON].data];
   const totalGohmBalance = gohmTokens.filter(nonNullable).reduce((res, bal) => res.add(bal), BigNumber.from(0));
 
   const props: PropsOf<typeof DataRow> = { title: t`Next Reward Amount` };

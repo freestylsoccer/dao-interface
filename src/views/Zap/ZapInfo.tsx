@@ -3,7 +3,7 @@ import "./Zap.scss";
 import { Trans } from "@lingui/macro";
 import { Box, Button, Grid, Paper, SvgIcon, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import { Token, TokenStack } from "@olympusdao/component-library";
+import { TokenStack } from "@olympusdao/component-library";
 import React from "react";
 
 import { ReactComponent as ArrowUp } from "../../assets/icons/arrow-up.svg";
@@ -56,7 +56,7 @@ type ZapInfoProps = {
   address: string;
 };
 
-const ZapInfo: React.FC<ZapInfoProps> = ({ tokens, address }) => {
+const ZapInfo: React.FC<ZapInfoProps> = ({ address }) => {
   const classes = useStyles();
 
   const trackClick = (address: string) => {

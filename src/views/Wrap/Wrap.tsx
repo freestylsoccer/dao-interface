@@ -19,7 +19,7 @@ import WrapCrossChain from "./WrapCrossChain";
 
 const Wrap: FC = () => {
   const dispatch = useDispatch();
-  const { provider, address, connect, networkId } = useWeb3Context();
+  const { provider, address, networkId } = useWeb3Context();
 
   const [, setZoomed] = useState<boolean>(false);
   const [assetFrom, setAssetFrom] = useState<string>("sOHM");

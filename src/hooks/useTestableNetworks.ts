@@ -15,5 +15,6 @@ export const useTestableNetworks = () => {
 
   return {
     MAINNET: getTestnet(NetworkId.MAINNET, NetworkId.TESTNET_RINKEBY, networkId),
+    POLYGON: getTestnet(NetworkId.POLYGON, NetworkId.POLYGON_TESTNET, networkId),
   };
 };
