@@ -36,7 +36,12 @@ export const StakeNextRebaseAmount = () => {
 
   const props: PropsOf<typeof DataRow> = { title: t`Next Reward Amount` };
 
-  if (rebaseRate && sohmBalances && totalGohmBalance && currentIndex) {
+  if (
+    rebaseRate !== undefined &&
+    sohmBalances !== undefined &&
+    totalGohmBalance !== undefined &&
+    currentIndex !== undefined
+  ) {
     const gohmBalanceAsSohm = convertGohmToOhm(totalGohmBalance, currentIndex);
 
     const totalCombinedBalance = parseBigNumber(gohmBalanceAsSohm, 18) + parseBigNumber(totalSohmBalance);

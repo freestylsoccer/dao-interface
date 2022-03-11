@@ -338,7 +338,6 @@ export const getAllBonds = createAsyncThunk(
         const bondTerms: IBondV2Terms = await liveBondTermsPromises[i];
         const finalBond = await processBond(bond, bondMetadata, bondTerms, bondIndex, provider, networkID, dispatch);
         liveBonds.push(finalBond);
-        console.log(finalBond);
         if (address) {
           dispatch(getTokenBalance({ provider, networkID, address, value: finalBond.quoteToken }));
         }

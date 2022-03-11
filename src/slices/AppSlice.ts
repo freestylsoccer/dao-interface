@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSelector, createSlice } from "@reduxjs/toolkit";
-import { ethers } from "ethers";
+import { BigNumber, ethers } from "ethers";
 import { NodeHelper } from "src/helpers/NodeHelper";
 import { RootState } from "src/store";
 
@@ -48,9 +48,9 @@ export const loadAppDetails = createAsyncThunk(
       }
     `;
 
-    if (networkID !== NetworkId.MAINNET) {
+    if (networkID !== NetworkId.POLYGON_TESTNET) {
       provider = NodeHelper.getMainnetStaticProvider();
-      networkID = NetworkId.MAINNET;
+      networkID = NetworkId.POLYGON_TESTNET;
     }
     const graphData = await apollo<{ protocolMetrics: IProtocolMetrics[] }>(protocolMetricsQuery);
 
@@ -109,7 +109,7 @@ export const loadAppDetails = createAsyncThunk(
 
     // Current index
     const currentIndex = await stakingContract.index();
-    const currentIndexV1 = await stakingContractV1.index();
+    const currentIndexV1 = BigNumber.from(0);
     return {
       currentIndex: ethers.utils.formatUnits(currentIndex, "gwei"),
       currentIndexV1: ethers.utils.formatUnits(currentIndexV1, "gwei"),
