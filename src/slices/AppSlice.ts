@@ -7,7 +7,7 @@ import { abi as sOHMv2 } from "../abi/sOhmv2.json";
 import { addresses, NetworkId } from "../constants";
 import { getMarketPrice, getTokenPrice, setAll } from "../helpers";
 import apollo from "../lib/apolloClient";
-import { OlympusStaking__factory, OlympusStakingv2__factory, SOhmv2 } from "../typechain";
+import { OlympusStakingv2__factory, SOhmv2 } from "../typechain";
 import { IBaseAsyncThunk } from "./interfaces";
 
 interface IProtocolMetrics {
@@ -94,7 +94,7 @@ export const loadAppDetails = createAsyncThunk(
     const currentBlock = await provider.getBlockNumber();
 
     const stakingContract = OlympusStakingv2__factory.connect(addresses[networkID].STAKING_V2, provider);
-    const stakingContractV1 = OlympusStaking__factory.connect(addresses[networkID].STAKING_ADDRESS, provider);
+    // const stakingContractV1 = OlympusStaking__factory.connect(addresses[networkID].STAKING_ADDRESS, provider);
 
     const sohmMainContract = new ethers.Contract(addresses[networkID].SOHM_V2 as string, sOHMv2, provider) as SOhmv2;
 

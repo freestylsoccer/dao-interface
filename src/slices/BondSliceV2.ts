@@ -329,6 +329,7 @@ export const getAllBonds = createAsyncThunk(
     const liveBondMetadataPromises = liveBondIndexes.map(async index => await depositoryContract.metadata(index));
     const liveBondTermsPromises = liveBondIndexes.map(async index => await depositoryContract.terms(index));
     const liveBonds: IBondV2[] = [];
+    console.log(liveBondIndexes);
 
     for (let i = 0; i < liveBondIndexes.length; i++) {
       const bondIndex = +liveBondIndexes[i];

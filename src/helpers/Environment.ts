@@ -15,6 +15,7 @@ export class EnvHelper {
   static alchemyArbitrumTestnetURI = `https://arb-rinkeby.g.alchemy.com/v2/${EnvHelper.env.REACT_APP_ARBITRUM_TESTNET_ALCHEMY}`;
   static alchemyAvalancheTestnetURI = ``;
   static polygonMumbaiTestnetURI = `https://polygon-mumbai.g.alchemy.com/v2/${EnvHelper.env.REACT_APP_POLYGON_TESTNET_ALCHEMY_IDS}`;
+  static polygonPolygonURI = `https://polygon-mainnet.g.alchemy.com/v2/${EnvHelper.env.REACT_APP_POLYGON_ALCHEMY_IDS}`;
   static whitespaceRegex = /\s+/;
 
   /**
@@ -100,7 +101,7 @@ export class EnvHelper {
         ) {
           ALCHEMY_ID_LIST = EnvHelper.env.REACT_APP_POLYGON_ALCHEMY_IDS.split(EnvHelper.whitespaceRegex);
         } else {
-          ALCHEMY_ID_LIST = [];
+          ALCHEMY_ID_LIST = ["T4aAkzkcKNz3fhS68RtmpXorBq3XTr39"];
         }
         uriPath = "https://polygon-mainnet.g.alchemy.com/v2/";
         break;
@@ -111,7 +112,7 @@ export class EnvHelper {
         ) {
           ALCHEMY_ID_LIST = EnvHelper.env.REACT_APP_POLYGON_TESTNET_ALCHEMY_IDS.split(EnvHelper.whitespaceRegex);
         } else {
-          ALCHEMY_ID_LIST = [];
+          ALCHEMY_ID_LIST = ["thZ1S5UeYBTEWvfxeYGMHLQ31QFy0L0A"];
         }
         uriPath = "https://polygon-mumbai.g.alchemy.com/v2/";
         break;

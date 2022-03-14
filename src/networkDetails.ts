@@ -248,7 +248,13 @@ interface INetwork {
 
 // These networks will be available for users to select. Other networks may be functional
 // (e.g. testnets, or mainnets being prepared for launch) but need to be selected directly via the wallet.
-export const USER_SELECTABLE_NETWORKS = [NetworkId.MAINNET, NetworkId.ARBITRUM, NetworkId.AVALANCHE];
+export const USER_SELECTABLE_NETWORKS = [
+  NetworkId.POLYGON,
+  NetworkId.POLYGON_TESTNET,
+  NetworkId.MAINNET,
+  NetworkId.ARBITRUM,
+  NetworkId.AVALANCHE,
+];
 
 // Set this to the chain number of the most recently added network in order to enable the 'Now supporting X network'
 // message in the UI. Set to -1 if we don't want to display the message at the current time.
@@ -351,7 +357,7 @@ export const NETWORKS: { [key: number]: INetwork } = {
     blockExplorerUrls: ["https://polygonscan.com/"],
     image: polygon,
     imageAltText: "Polygon Logo",
-    uri: () => NodeHelper.getMainnetURI(NetworkId.POLYGON),
+    uri: () => EnvHelper.polygonPolygonURI,
   },
   [NetworkId.POLYGON_TESTNET]: {
     chainName: "Polygon Mumbai Testnet",

@@ -26,7 +26,7 @@ export const useStakeToken = (toToken: "sOHM" | "gOHM") => {
 
       if (!parsedAmount.gt(0)) throw new Error(t`Please enter a number greater than 0`);
 
-      const balance = balances[networks.MAINNET].data;
+      const balance = balances[networks.POLYGON].data;
 
       if (!balance) throw new Error(t`Please refresh your page and try again`);
 

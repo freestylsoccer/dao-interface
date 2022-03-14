@@ -10,7 +10,6 @@ import { prettifySeconds } from "../../../../../../helpers/timeUtil";
 
 const RebaseTimer: React.FC = () => {
   const { data: nextRebaseDate } = useNextRebaseDate();
-  console.log(nextRebaseDate);
   return (
     <Box className="rebase-timer">
       <Typography variant="body2">

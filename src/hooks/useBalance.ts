@@ -1,12 +1,9 @@
 import { BigNumber } from "@ethersproject/bignumber";
-import { useQueries, useQuery, UseQueryResult } from "react-query";
+import { useQueries, UseQueryResult } from "react-query";
 import { abi as IERC20_ABI } from "src/abi/IERC20.json";
 import { NetworkId } from "src/constants";
 import {
   AddressMap,
-  FUSE_POOL_6_ADDRESSES,
-  FUSE_POOL_18_ADDRESSES,
-  FUSE_POOL_36_ADDRESSES,
   GOHM_ADDRESSES,
   GOHM_TOKEMAK_ADDRESSES,
   OHM_ADDRESSES,
@@ -15,11 +12,11 @@ import {
   V1_SOHM_ADDRESSES,
   WSOHM_ADDRESSES,
 } from "src/constants/addresses";
-import { nonNullable, queryAssertion } from "src/helpers";
+import { nonNullable } from "src/helpers";
 import { IERC20 } from "src/typechain";
 
 import { useWeb3Context } from ".";
-import { useMultipleContracts, useStaticFuseContract } from "./useContract";
+import { useMultipleContracts } from "./useContract";
 
 export const balanceQueryKey = (address?: string, tokenAddressMap?: AddressMap, networkId?: NetworkId) =>
   ["useBalance", address, tokenAddressMap, networkId].filter(nonNullable);
@@ -52,6 +49,7 @@ export const useBalance = <TAddressMap extends AddressMap = AddressMap>(tokenAdd
  * Returns gOHM balance in Fuse
  */
 export const fuseBalanceQueryKey = (address: string) => ["useFuseBalance", address].filter(nonNullable);
+/*
 export const useFuseBalance = () => {
   const { address } = useWeb3Context();
   const pool6Contract = useStaticFuseContract(FUSE_POOL_6_ADDRESSES[NetworkId.MAINNET], NetworkId.MAINNET);
@@ -76,6 +74,7 @@ export const useFuseBalance = () => {
     ),
   };
 };
+*/
 
 export const useOhmBalance = () => useBalance(OHM_ADDRESSES);
 export const useSohmBalance = () => useBalance(SOHM_ADDRESSES);
